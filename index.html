@@ -8,5 +8,32 @@
     <h1>扫码开始游戏</h1>
     <img src="game-qr.png" alt="游戏二维码" width="300">
     <!-- 后续在此嵌入游戏代码 -->
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 400; canvas.height = 400;
+    document.body.appendChild(canvas);
+    
+    // 地鼠位置与点击检测逻辑
+    let mole = {x:0, y:0, visible:false};
+    function spawnMole() {
+        mole.x = Math.random()*350;
+        mole.y = Math.random()*350;
+        mole.visible = true;
+        setTimeout(()=>{ mole.visible = false }, 1000);
+    }
+    setInterval(spawnMole, 1500);
+    
+    // 绘制循环
+    function draw() {
+        ctx.clearRect(0,0,400,400);
+        if(mole.visible) {
+            ctx.fillStyle = 'brown';
+            ctx.beginPath();
+            ctx.arc(mole.x+25, mole.y+25, 25, 0, Math.PI*2);
+            ctx.fill();
+        }
+        requestAnimationFrame(draw);
+    }
+    draw();
 </body>
 </html>
