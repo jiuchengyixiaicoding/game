@@ -7,7 +7,7 @@
 <body>
     <h1>扫码开始游戏</h1>
     <img src="game-qr.png" alt="游戏二维码" width="300">
-    <!-- 后续在此嵌入游戏代码 -->
+    <script>
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = 400; canvas.height = 400;
@@ -35,5 +35,6 @@
         requestAnimationFrame(draw);
     }
     draw();
+</script>
 </body>
 </html>
